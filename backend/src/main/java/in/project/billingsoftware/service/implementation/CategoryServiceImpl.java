@@ -8,7 +8,9 @@ import in.project.billingsoftware.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +22,14 @@ public class CategoryServiceImpl implements CategoryService {
         CategoryEntity categoryEntity = convertToEntity(req);
         categoryEntity = categoryRepository.save(categoryEntity);
         return convertToResponse(categoryEntity);
+    }
+
+    @Override
+    public List<CategoryResponse> read() {
+        return categoryRepository.findAll()
+                .stream()
+                .map(categoryEntity -> convertToResponse(categoryEntity))
+                .collect(Collectors.toList());
     }
 
     private CategoryResponse convertToResponse(CategoryEntity categoryEntity) {

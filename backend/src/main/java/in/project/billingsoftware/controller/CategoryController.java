@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 //A @RestController in Spring Boot handles HTTP requests (GET, POST, PUT, DELETE),
 // acts as a bridge between the client and backend, processes requests (with services),
 // and returns data, usually in JSON format.
@@ -28,5 +30,10 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryResponse addCategory(@RequestBody CategoryRequest req){
         return categoryService.add(req);
+    }
+
+    @GetMapping
+    public List<CategoryResponse> fetchCategories(){
+        return categoryService.read();
     }
 }
