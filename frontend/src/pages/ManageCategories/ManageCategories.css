@@ -1,0 +1,27 @@
+.manage-categories-container {
+  width: 100vw;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #2c3335;
+  min-height: calc(100vh - 4.5rem);
+  box-sizing: border-box;
+  color: #ccc;
+}
+
+.custom-accordion {
+  background-color: #1976d2;
+  color: #ccc;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #444;
+}
+
+.custom-summary {
+  background-color: blue;
+  border-radius: 8px 8px 0 0;
+}
+
+.custom-details {
+  background-color: white;
+}
+
