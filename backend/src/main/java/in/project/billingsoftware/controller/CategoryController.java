@@ -20,19 +20,17 @@ import java.util.List;
 
 //Maps all the HTTP requests starting with /categories to this class.
 @RestController
-@RequestMapping("/categories")
 
 // @RequiredArgsConstructor is a Lombok annotation that generates a constructor
 // with parameters for all final fields (like categoryService) so Spring can inject them.
 @RequiredArgsConstructor
-
 public class CategoryController {
 
     private final CategoryService categoryService;
 
     //Binds the body of the HTTP request to the CategoryRequest parameter in the method.
     //@RequestPart is used to extract parts of a multipart/form-data request.
-    @PostMapping
+    @PostMapping("/admin/categories")
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryResponse addCategory(@RequestPart("category") String categoryString,
                                         @RequestPart("file")MultipartFile file){
@@ -54,7 +52,7 @@ public class CategoryController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{categoryId}")
+    @DeleteMapping("/admin/categories/{categoryId}")
     public void remove(@PathVariable String categoryId){
         try {
             categoryService.delete(categoryId);
